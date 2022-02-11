@@ -83,7 +83,6 @@ void MainWindow::moveFiles()
 
     auto ok = m_filter->open(QIODevice::ReadOnly);
 
-
     if(ok) {
         auto str = new QTextStream(m_filter);
         auto status = false;
@@ -91,7 +90,7 @@ void MainWindow::moveFiles()
         ui->lblstatusBar->setText("");
 
         while (!str->atEnd()) {
-            auto filename = m_prefix + str->readLine() + m_postfix;   //hardcoded for now
+            auto filename = m_prefix + str->readLine() + m_postfix;
             status = m_moveFrom->rename(filename, m_moveTo->path() + "/" + filename);
 
             qDebug() << status << filename;
